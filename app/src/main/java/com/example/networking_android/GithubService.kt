@@ -13,5 +13,5 @@ interface GithubService {
     suspend fun getUserbyId(@Path("id")id:String?):Response<User>
 
     @GET("search/users")
-    suspend fun searchUsers(@Query("q")q:String?):Response<List<User>>
+    suspend fun searchUsers(@Query("query")query:String?):Response<UserResponse>
 }

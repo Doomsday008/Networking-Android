@@ -1,5 +1,6 @@
 package com.example.networking_android;
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,16 +15,18 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     var onItemClick:((login: String)->Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
+        Log.i("ViewHolder", "working ")
         return UserViewHolder(
                 LayoutInflater.from(parent.context).inflate(R.layout.item_user, parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: UserViewHolder, position: Int) =
         holder.bindView(data[position])
-    }
+
 
     override fun getItemCount(): Int = data.size
+
 
 
     fun swapData(data: List<User>){
@@ -34,18 +37,16 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
    inner class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        // here comes all the views / variables from view.findViewById()
-        // Example: val textView = view.findViewById(R.id.textView1)
-        fun bindView(item: User) {
-            with(itemView) {
+        fun bindView(item: User) = with(itemView) {
                 textView.text = item.name
                 textView2.text = item.login
                 Picasso.get().load(item.avatarUrl).into(imageView)
+            Log.i("binding", "working ")
+
                 setOnClickListener {
                     onItemClick?.invoke(item.login!!)
                 }
             }
-        }
     }
 
 }

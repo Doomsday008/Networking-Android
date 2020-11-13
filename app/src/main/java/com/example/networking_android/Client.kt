@@ -10,5 +10,6 @@ object Client {
     private val retrofit = Retrofit.Builder()
             .baseUrl("https://api.github.com/users/")
             .addConverterFactory(GsonConverterFactory.create(gson)).build()
-    val api = retrofit.create(GithubService::class.java)
+    val api: GithubService = retrofit.create(GithubService::class.java)
+
 }

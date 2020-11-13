@@ -17,6 +17,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/userRv"
         tools:listitem="@layout/item_user"
-        tools:itemCount="8"/>
+        tools:itemCount="9"/>
 
 </LinearLayout>
